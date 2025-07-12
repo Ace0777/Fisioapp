@@ -1,40 +1,33 @@
-package com.example.fisioapp.model;
+package com.example.fisioapp.model.dto;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
-import java.util.List;
+public class PatientDTO {
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "patient")
-@Entity(name = "Patient")
-public class Patient {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @NotBlank(message = "O nome é obrigatório.")
     private String name;
+
+    @NotBlank(message = "O CPF é obrigatório.")
+    @Pattern(regexp = "\\d{11}", message = "O CPF deve conter 11 dígitos numéricos.")
     private String cpf;
+
+    @Min(value = 0, message = "A idade não pode ser negativa.")
     private Integer age;
+
+    @NotBlank(message = "O telefone é obrigatório.")
+    @Size(min = 10, max = 15, message = "O telefone deve conter entre 10 e 15 caracteres.")
     private String phone;
-    private String  observations;
+
+    private String observations;
+
+    @NotBlank(message = "O CEP é obrigatório.")
+    @Pattern(regexp = "\\d{8}", message = "O CEP deve conter 8 dígitos numéricos.")
     private String cep;
-    @OneToMany(mappedBy = "patient")
-    private List<Appointment> appointments;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Getters e Setters
 
     public String getName() {
         return name;
@@ -84,11 +77,4 @@ public class Patient {
         this.cep = cep;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
 }

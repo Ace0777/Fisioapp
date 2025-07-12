@@ -29,4 +29,44 @@ public class Appointment {
     private AppointmentStattus status;
 
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public LocalDateTime getAppointmentDayHour() {
+        return AppointmentDayHour;
+    }
+
+    public void setAppointmentDayHour(LocalDateTime appointmentDayHour) {
+        AppointmentDayHour = appointmentDayHour;
+    }
+
+    public AppointmentStattus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AppointmentStattus status) {
+        this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
