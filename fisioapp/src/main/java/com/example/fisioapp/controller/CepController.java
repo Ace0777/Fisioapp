@@ -12,6 +12,8 @@ public class CepController {
     @Autowired
     private CepService cepService;
 
+    private String test;
+
     @GetMapping(value = "/{cep}", produces = "application/json")
     public ViaCepResponse buscarCep(@PathVariable String cep) {
         return cepService.buscarCep(cep);
