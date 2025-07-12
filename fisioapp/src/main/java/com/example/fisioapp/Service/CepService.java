@@ -27,4 +27,9 @@ public class CepService {
             throw new RuntimeException("Erro ao consultar CEP", e);
         }
     }
+
+    public boolean validaCep(String cep) {
+        BrasilApiCepResponse resp = buscarCep(cep);
+        return resp.getCep() != null;
+    }
 }
