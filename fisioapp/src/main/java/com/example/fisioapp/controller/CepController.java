@@ -24,4 +24,15 @@ public class CepController {
             return ResponseEntity.status(500).body("{\"erro\": \"Erro interno ao buscar CEP\"}");
         }
     }
+
+    @GetMapping(value = "/valida/{cep}")
+    public boolean validaCep(@PathVariable String cep) {
+        try {
+            return cepService.validaCep(cep);
+        } catch (IllegalArgumentException e) {
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
