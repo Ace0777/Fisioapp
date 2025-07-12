@@ -13,6 +13,8 @@ public class CepController {
     @Autowired
     private CepService cepService;
 
+    private String test;
+
     @GetMapping(value = "/{cep}", produces = "application/json")
     public ResponseEntity<?> buscarCep(@PathVariable String cep) {
         try {

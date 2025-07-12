@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 
+import com.example.fisioapp.mapper.PatientMapper;
 import com.example.fisioapp.model.Patient;
 import com.example.fisioapp.model.dto.BrasilApiCepResponse;
+import com.example.fisioapp.model.dto.PatientDTO;
 import com.example.fisioapp.repositories.PatientRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,7 @@ public class PatientService {
         return patientRepository.findById(id);
     }
 
+
     public Patient save(Patient patient) {
         boolean existsCpf = false;
 
@@ -47,6 +50,17 @@ public class PatientService {
         if (!cepService.validaCep((patient.getCep()))) throw new IllegalArgumentException("CEP inválido.");
 
         return patientRepository.save(patient);
+    }
+
+
+
+    public Patient updatePatient(Long id, PatientDTO dto) {
+        Patient existingPatient = patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+
+        PatientMapper.INSTANCE.updatePatientFromDto(dto, existingPatient);
+
+        return patientRepository.save(existingPatient);
     }
 
     public void delete(Long id){
