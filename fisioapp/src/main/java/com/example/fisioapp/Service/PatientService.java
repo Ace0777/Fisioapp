@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import com.example.fisioapp.mapper.PatientMapper;
 import com.example.fisioapp.model.Patient;
-import com.example.fisioapp.model.dto.BrasilApiCepResponse;
 import com.example.fisioapp.model.dto.PatientDTO;
 import com.example.fisioapp.repositories.PatientRepository;
 import jakarta.transaction.Transactional;
@@ -63,7 +62,7 @@ public class PatientService {
         return patientRepository.save(existingPatient);
     }
 
-    public void delete(Long id){
+    public void deletePatient(Long id){
         patientRepository.deleteById(id);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.fisioapp.Service;
 
-import com.example.fisioapp.model.dto.BrasilApiCepResponse;
+import com.example.fisioapp.model.dto.BrasilApiCepResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -11,13 +11,13 @@ public class CepService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public BrasilApiCepResponse buscarCep(String cep) {
+    public BrasilApiCepResponseDTO buscarCep(String cep) {
         String url = "https://brasilapi.com.br/api/cep/v1/" + cep;
         System.out.println("Consultando BrasilAPI: " + url);
 
         try {
-            ResponseEntity<BrasilApiCepResponse> response =
-                    restTemplate.getForEntity(url, BrasilApiCepResponse.class);
+            ResponseEntity<BrasilApiCepResponseDTO> response =
+                    restTemplate.getForEntity(url, BrasilApiCepResponseDTO.class);
             return response.getBody();
         } catch (HttpClientErrorException.NotFound e) {
             System.err.println("CEP não encontrado: " + cep);
@@ -29,7 +29,7 @@ public class CepService {
     }
 
     public boolean validaCep(String cep) {
-        BrasilApiCepResponse resp = buscarCep(cep);
+        BrasilApiCepResponseDTO resp = buscarCep(cep);
         return resp.getCep() != null;
     }
 }

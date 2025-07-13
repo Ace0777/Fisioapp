@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BrasilApiCepResponse {
+public class BrasilApiCepResponseDTO {
 
     @JsonProperty("cep")
     private String cep;

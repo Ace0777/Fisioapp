@@ -5,7 +5,6 @@ import com.example.fisioapp.Service.PatientService;
 import com.example.fisioapp.model.Patient;
 import com.example.fisioapp.model.dto.PatientDTO;
 import com.example.fisioapp.mapper.PatientMapper;
-import com.example.fisioapp.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +37,7 @@ public class PatientController {
     }
 
     public void delete(Long id){
-        patientService.delete(id);
+        patientService.deletePatient(id);
     }
 
 }

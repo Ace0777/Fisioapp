@@ -27,7 +27,6 @@ public class PatientDTO {
     @Pattern(regexp = "\\d{8}", message = "O CEP deve conter 8 dígitos numéricos.")
     private String cep;
 
-    // Getters e Setters
 
     public String getName() {
         return name;

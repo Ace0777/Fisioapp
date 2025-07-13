@@ -2,7 +2,7 @@ package com.example.fisioapp.controller;
 
 import com.example.fisioapp.Service.CepService;
 import com.example.fisioapp.controller.exceptions.ExceptionHandlerController;
-import com.example.fisioapp.model.dto.BrasilApiCepResponse;
+import com.example.fisioapp.model.dto.BrasilApiCepResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class CepController {
     @GetMapping(value = "/{cep}", produces = "application/json")
     public ResponseEntity<?> buscarCep(@PathVariable String cep) {
         try {
-            BrasilApiCepResponse resposta = cepService.buscarCep(cep);
+            BrasilApiCepResponseDTO resposta = cepService.buscarCep(cep);
             return ResponseEntity.ok(resposta);
         } catch (Exception e) {
             return ExceptionHandlerController.handleException(e);
