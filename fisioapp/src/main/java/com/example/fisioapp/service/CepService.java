@@ -1,4 +1,4 @@
-package com.example.fisioapp.Service;
+package com.example.fisioapp.service;
 
 import com.example.fisioapp.model.dto.BrasilApiCepResponseDTO;
 import org.springframework.http.ResponseEntity;

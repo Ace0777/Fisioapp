@@ -1,6 +1,6 @@
 package com.example.fisioapp.controller;
 
-import com.example.fisioapp.Service.CepService;
+import com.example.fisioapp.service.CepService;
 import com.example.fisioapp.controller.exceptions.ExceptionHandlerController;
 import com.example.fisioapp.model.dto.BrasilApiCepResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;

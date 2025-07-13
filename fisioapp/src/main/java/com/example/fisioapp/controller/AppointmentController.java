@@ -1,9 +1,8 @@
 package com.example.fisioapp.controller;
 
-import com.example.fisioapp.Service.AppointmentService;
+import com.example.fisioapp.service.AppointmentService;
 import com.example.fisioapp.mapper.AppointmentMapper;
 import com.example.fisioapp.model.Appointment;
-import com.example.fisioapp.model.Patient;
 import com.example.fisioapp.model.dto.AppointmentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 

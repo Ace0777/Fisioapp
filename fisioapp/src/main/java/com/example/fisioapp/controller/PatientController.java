@@ -1,15 +1,15 @@
 package com.example.fisioapp.controller;
 
-
-import com.example.fisioapp.Service.PatientService;
+import com.example.fisioapp.service.PatientService;
 import com.example.fisioapp.model.Patient;
 import com.example.fisioapp.model.dto.PatientDTO;
 import com.example.fisioapp.mapper.PatientMapper;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/patient")
@@ -18,26 +18,33 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-
-    public void savePatient(PatientDTO dto) {
+    @PostMapping
+    public Patient savePatient(@RequestBody @Valid PatientDTO dto) {
         Patient patient = PatientMapper.INSTANCE.toEntity(dto);
-        patientService.save(patient);
+        return patientService.save(patient);
     }
 
+    @GetMapping
     public List<Patient> findAllPatient(){
         return patientService.findAll();
     }
 
-    public Optional<Patient> findPatientById(Long id){
-        return patientService.findById(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<Patient> findPatientById(@PathVariable Long id){
+        return patientService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    public Patient updatePatient(Long id, PatientDTO dto) {
-         return patientService.updatePatient(id, dto);
+    @PutMapping("/{id}")
+    public Patient updatePatient(@PathVariable Long id, @RequestBody @Valid PatientDTO dto) {
+        return patientService.updatePatient(id, dto);
     }
 
-    public void delete(Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         patientService.deletePatient(id);
+        return ResponseEntity.ok().build();
     }
-
 }
+
