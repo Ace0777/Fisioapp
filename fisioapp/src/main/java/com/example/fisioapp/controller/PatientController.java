@@ -33,7 +33,6 @@ public class PatientController {
         return patientService.findById(id);
     }
 
-
     public Patient updatePatient(Long id, PatientDTO dto) {
          return patientService.updatePatient(id, dto);
     }
