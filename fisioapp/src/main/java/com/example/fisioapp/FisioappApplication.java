@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class FisioappApplication implements CommandLineRunner {
 
@@ -15,7 +16,6 @@ public class FisioappApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("App rodando. Pressione Ctrl+C para sair.");
-		Thread.currentThread().join(); // nunca termina
 	}
 
 

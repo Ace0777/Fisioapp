@@ -1,4 +1,4 @@
-package com.example.fisioapp.Service;
+package com.example.fisioapp.service;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,9 +1,7 @@
-package com.example.fisioapp.Service;
+package com.example.fisioapp.service;
 
 import com.example.fisioapp.mapper.AppointmentMapper;
-import com.example.fisioapp.mapper.PatientMapper;
 import com.example.fisioapp.model.Appointment;
-import com.example.fisioapp.model.Patient;
 import com.example.fisioapp.model.dto.AppointmentDTO;
 import com.example.fisioapp.repositories.AppointmentRepository;
 import jakarta.transaction.Transactional;
@@ -32,11 +30,11 @@ public class AppointmentService {
     }
 
      public Optional<Appointment> findAppointmentByIdPatient(Long id) {
-        return appointmentRepository.findByPatientId(id);
+        return appointmentRepository.findById(id);
     }
 
     public List<Appointment> findAllByPatientId(Long id) {
-        return appointmentRepository.findAllByPatientId(id);
+        return appointmentRepository.findAllByPatient_Id(id);
     }
 
 
